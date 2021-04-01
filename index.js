@@ -5,7 +5,7 @@ const axios = require("axios");
 var fun = null;
 
 function tesu() {
-  fun = setInterval(apiall, 9000);
+  fun = setInterval(apiall, 1800000);
 }
 
 function apiall() {
