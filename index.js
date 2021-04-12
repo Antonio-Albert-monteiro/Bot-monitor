@@ -5,12 +5,12 @@ const axios = require("axios");
 var fun = null;
 
 function tesu() {
-  fun = setInterval(apiall, 1800000);
+  fun = setInterval(apiall, 9000);
 }
 
 function apiall() {
     const data = axios({
-        url: "https://testapi.antonio9594.repl.co/",
+        url: "https://subs-Apis.antonio9594.repl.co/api/corona",
         headers: {'accept': 'application/json'}
     }).then((result) => {
         console.log(result.data)
