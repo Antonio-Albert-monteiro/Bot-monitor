@@ -1,24 +1,50 @@
-const Discord = require("discord.js"); //Conexão com a livraria Discord.js
-const client = new Discord.Client(); //Criação de um novo Client
-const axios = require("axios");
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const config = require("./config.json");
+const server = require("./server.js");
 
-var fun = null;
+client.on("ready", () => {
+  let activities = [
+      `Utilize ${config.prefix}help para obter ajuda`,
+      `${client.guilds.cache.size} servidores!`,
+      `${client.channels.cache.size} canais!`,
+      `${client.users.cache.size} usuários!`
+    ],
+    i = 0;
+  setInterval( () => client.user.setActivity(`${activities[i++ % activities.length]}`, {
+        type: "PLAYING"
+      }), 1000 * 60); 
+  client.user
+      .setStatus("dnd")
+      .catch(console.error);
+console.log("Estou Online!")
+});
 
-function tesu() {
-  fun = setInterval(apiall, 9000);
-}
+client.on('message', message => {
+     if (message.author.bot) return;
+     if (message.channel.type == 'dm') return;
+     if (!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
+     if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
 
-function apiall() {
-    const data = axios({
-        url: "https://subs-Apis.antonio9594.repl.co/api/corona",
-        headers: {'accept': 'application/json'}
-    }).then((result) => {
-        console.log(result.data)
-    }).catch((error) => {
-        console.error(error)
-    })
-}
+    const args = message.content
+        .trim().slice(config.prefix.length)
+        .split(/ +/g);
+    const command = args.shift().toLowerCase();
 
-tesu();
+    try {
+        const commandFile = require(`./commands/${command}.js`)
+        commandFile.run(client, message, args);
+    } catch (err) {
+    console.error('Erro:' + err);
+  }
+});
 
-client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
+client.on("message", message => {
+    if (message.author.bot) return;
+    if (message.channel.type == 'dm')
+    return
+    if(message.content == '<@IDdoBot>' || message.content == '<@!IDdoBot>') {
+    return message.channel.send(`Olá ${message.author} Meu prefixo é ${prefix}, digite ${prefix}help para saber meus comandos`)}
+});
+
+client.login(process.env.TOKEN);

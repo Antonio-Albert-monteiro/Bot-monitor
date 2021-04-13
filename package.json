@@ -1,17 +1,29 @@
 {
-  "name": "Bot-test",
+  "name": "Bot-monitor",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.3",
+    "express": "^4.17.1",
+    "firebase": "^8.4.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonioalbert349/Bot-monitor.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "discord.js": "^12.5.2",
-    "express": "^4.17.1"
-  }
+  "bugs": {
+    "url": "https://github.com/antonioalbert349/Bot-monitor/issues"
+  },
+  "homepage": "https://github.com/antonioalbert349/Bot-monitor#readme"
 }
