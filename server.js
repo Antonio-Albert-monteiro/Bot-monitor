@@ -10,8 +10,10 @@ app.get("/", (request, response) => {
 });
 
 app.get("/vote", (request, response) => {
+  let date = new Date();
   response.status(200).send({
-      info: "voto comcluido com sucesso"
+      info: "voto comcluido com sucesso",
+      time: date
   })
 });
 
