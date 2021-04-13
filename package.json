@@ -5,10 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.21.1",
-    "discord": "^0.8.2",
     "discord.js": "^12.5.3",
     "express": "^4.17.1",
-    "firebase": "^8.4.0"
+    "firebase": "^8.4.1"
   },
   "devDependencies": {},
   "scripts": {

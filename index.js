@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const server = require("./server.js");
+const banco = require("./banco.js");
 
 client.on("ready", () => {
   let activities = [
