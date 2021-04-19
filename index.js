@@ -44,7 +44,7 @@ client.on("message", message => {
     if (message.author.bot) return;
     if (message.channel.type == 'dm')
     return
-    if(message.content == '<@IDdoBot>' || message.content == '<@!IDdoBot>') {
+    if(message.content == `${client.user.id}` || message.content == '<@!IDdoBot>') {
     return message.channel.send(`Olá ${message.author} Meu prefixo é ${prefix}, digite ${prefix}help para saber meus comandos`)}
 });
 
