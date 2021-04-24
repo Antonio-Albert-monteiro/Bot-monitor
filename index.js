@@ -3,6 +3,8 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const server = require("./server.js");
 const banco = require("./banco.js");
+const prefix = config.prefix;
+
 
 client.on("ready", () => {
   let activities = [
@@ -41,11 +43,12 @@ client.on('message', message => {
 });
 
 client.on("message", message => {
-    if (message.author.bot) return;
-    if (message.channel.type == 'dm')
-    return
-    if(message.content == `${client.user.id}` || message.content == '<@!IDdoBot>') {
-    return message.channel.send(`Olá ${message.author} Meu prefixo é ${prefix}, digite ${prefix}help para saber meus comandos`)}
+if (message.author.bot) return;
+if (message.channel.type == 'dm') return;
+
+if(message.content == '831181485083459624' || message.content == '831181485083459624') {
+  return message.channel.send(`Olá ${message.author} Meu prefixo é nesse servidor é ${prefix}, digite ${prefix} para obter ajuda`)
+}
 });
 
 client.login(process.env.TOKEN);
